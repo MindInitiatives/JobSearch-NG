@@ -1,0 +1,26 @@
+
+<div class="flex flex-wrap bg-white shadow-sm rounded-md p-4 -mt-10 mb-4 w-full">
+    <div class="flex-1 m-2">
+        <app-select
+            defaultValue="Full time"
+            [options]="jobTypeOptions"
+            displayField="name"
+            (onChange)="handleSelection($event)"
+        >
+        </app-select>
+    </div>
+
+    <div class="flex-1 m-2">
+        <app-select
+            defaultValue="Remote"
+            [options]="jobLocationOptions"
+            displayField="name"
+            (onChange)="handleSelection($event)"
+        >
+        </app-select>
+    </div>
+
+    <button class="inline-flex h-11 m-2 flex-1 items-center justify-center bg-primary text-secondary border-0 px-3 focus:outline-none hover:bg-gray-600 hover:text-white transition-all duration-[.5s] rounded text-xs font-semibold">
+      Search
+    </button>
+  </div>

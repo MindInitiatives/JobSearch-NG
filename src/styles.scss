@@ -1,1 +1,152 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+    --primary: #48c4e7;
+    --secondary: #061f27;
+    --antiquewhite: #faebd7;
+    --light-slate: #a8b2d1;
+    --font-outfit: "Outfit", system-ui, Inter, Helvetica, Arial, sans-serif;
+    --font-playfair_display: "Playfair Display", serif;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-outfit);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer base {
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-outfit;
+    }
+
+    h1 {
+        @apply font-playfair_display;
+    }
+
+    .h4,
+    h4 {
+        @apply text-[1.5rem];
+    }
+
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply mb-2 font-[500] leading-[1.2];
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+
+    button {
+        background-color: #f9f9f9;
+    }
+
+    .modal-content {
+        background-color: #f9f9f9;
+        background-image: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    button {
+        background-color: transparent;
+        color: #ffffff;
+    }
+
+    .modal-content {
+        background-color: var(--primary);
+        background-image: linear-gradient(62deg, #191a2a 0%, #12100e 100%);
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: FadeIn 0.3s ease-in forwards !important;
+}
+
+.modal-content {
+    position: relative;
+    width: 40rem;
+    max-width: 45rem;
+    max-height: 90vh;
+    margin: 0 auto;
+    padding: 2.3rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1em #000000aa;
+    overflow: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.3rem;
+    right: 2rem;
+    color: gray;
+    font-size: 28px;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

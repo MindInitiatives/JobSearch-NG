@@ -1,0 +1,83 @@
+<div class="flex items-center sticky top-0 pb-4">
+    <img [src]="
+            checkImageURL(data.employer_logo)
+            ? data.employer_logo
+            : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg'"
+        alt="employer logo" class="w-8 h-8 rounded-full flex-shrink-0 object-cover object-center" />
+    <h2 class="ml-2 lg:text-xl sm:text-base">{{data.job_title}} &#64; {{data.employer_name}}</h2>
+</div>
+<div class="h-[60vh] overflow-y-auto">
+    <div class="flex flex-col items-start">
+        <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+            <span
+                class="inline-block py-1 px-2 rounded bg-slate-900 text-slate-50 text-xs font-medium tracking-widest">{{data.job_employment_type
+                ? data.job_employment_type : 'N/A'}}</span>
+            <span
+                class="inline-block py-1 px-2 bg-slate-50 text-sky-500 text-xs font-medium tracking-widest border-l-2 border-gray-200 ml-3">{{data.job_location
+                ? data.job_location : 'N/A'}}</span>
+        </div>
+
+        <div class="pb-4 mb-4 border-b-2 border-gray-100">
+            <h2 class="sm:text-base text-xl title-font font-medium text-gray-900 mt-4 mb-4">Description</h2>
+            <p class="leading-relaxed">{{data.job_description ? data.job_description : 'No data provided'}}</p>
+        </div>
+
+        <div class="pb-4 mb-4 border-b-2 border-gray-100">
+            <h2 class="sm:text-base text-xl title-font font-medium text-gray-900 mt-4 mb-4">Qualifications</h2>
+            <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
+                @if (data.job_highlights) {
+                @for (res of data.job_highlights.Qualifications; track $index ;) {
+                <a class="flex items-center">
+                    <span
+                        class="bg-sky-100 text-sky-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                            <path d="M20 6L9 17l-5-5"></path>
+                        </svg>
+                    </span>
+                    <span class="inline-flex">{{res}}</span>
+                </a>
+                }
+                @empty {
+                'No data provided'
+                }
+                }
+            </nav>
+        </div>
+
+        <div class="pb-4 mb-4 border-b-2 border-gray-100">
+            <h2 class="sm:text-base text-xl title-font font-medium text-gray-900 mt-4 mb-4">Responsibilities</h2>
+            <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
+                @if (data.job_highlights) {
+                @for (res of data.job_highlights.Responsibilities; track $index ;) {
+                <a class="flex items-center" key={i}>
+                    <span
+                        class="bg-sky-100 text-sky-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                            <path d="M20 6L9 17l-5-5"></path>
+                        </svg>
+                    </span>
+                    <span class="inline-flex">{{res}}</span>
+                </a>
+                }
+                @empty {
+                'No data provided'
+                }
+                }
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="flex items-center sticky bottom-0 mt-auto w-full">
+    <span class="text-gray-400 inline-flex items-center leading-none text-xs">
+        Posted on: {{formatDate(data.job_posted_at_datetime_utc)}}
+    </span>
+    <a class="text-primary inline-flex items-center ml-auto hover:text-sky-500" href="{{data.job_google_link}}" target="_blank">Apply
+        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+        </svg>
+    </a>
+</div>
