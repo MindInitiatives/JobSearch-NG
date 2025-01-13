@@ -7,6 +7,7 @@ import { Job } from './interfaces/job';
 import { ModalService } from './services/modal.service';
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { BackgroundSyncService } from './services/background-sync.service';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +24,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private fetchService: FetchService
+    private fetchService: FetchService,
+    private backgroundSyncService: BackgroundSyncService
   ) {
     // Automatically refetch data whenever needed
     effect(() => {
       if (this.error()) {
         console.warn('An error occurred:', this.error()?.message);
+        this.backgroundSync();
       }
     });
   }
@@ -41,6 +44,10 @@ export class AppComponent implements OnInit {
     };
     this.fetchService.fetch(endpoint, query);
   }
+
+  backgroundSync = () => {
+    this.backgroundSyncService.backgroundSync('sync-jobs');
+  };
 
   selectJob = (job: Job) => {
     this.modalService.open(JobDetailsComponent, { data: job });
