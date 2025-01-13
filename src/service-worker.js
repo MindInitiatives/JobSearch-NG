@@ -67,7 +67,7 @@ function fetchJobs() {
   return fetch('https://jsearch.p.rapidapi.com/search', {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': '7a2933e5e3msh609f03dcfbf8fd1p14ff83jsn40401d29b810',
+      'x-rapidapi-key': 'YOUR_API_KEY',
       'x-rapidapi-host': 'jsearch.p.rapidapi.com'
     },
     params:{

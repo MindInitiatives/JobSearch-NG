@@ -9,7 +9,7 @@ export class BackgroundSyncService {
     return (swRegistration as any).sync as BackgroundSyncManager | undefined;
   }
 
-  backgroundSync = (tag: string) => {
+  registerBackgroundSync = (tag: string) => {
     if ('serviceWorker' in navigator && 'SyncManager' in window) {
       navigator.serviceWorker.ready.then((swRegistration) => {
         const syncManager = this.getServiceWorkerSync(swRegistration);

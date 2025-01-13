@@ -22,7 +22,7 @@ export class FetchService {
 
   private readonly baseUrl = 'https://jsearch.p.rapidapi.com';
   private readonly headers = new HttpHeaders({
-    'x-rapidapi-key': '7a2933e5e3msh609f03dcfbf8fd1p14ff83jsn40401d29b810', // Replace with your API key
+    'x-rapidapi-key': 'YOUR_API_KEY', // Replace with your API key
     'x-rapidapi-host': 'jsearch.p.rapidapi.com',
   });
 
